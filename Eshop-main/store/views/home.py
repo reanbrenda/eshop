@@ -56,4 +56,5 @@ def store(request):
 
     print('you are : ', request.session.get('email'))
     return render(request, 'index.html', data)
-
+def home(request):
+    return render(request, 'home.html')
