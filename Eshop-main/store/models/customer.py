@@ -25,3 +25,4 @@ class Customer(models.Model):
             return True
 
         return False
+    

@@ -5,7 +5,7 @@ class Products(models.Model):
     price= models.IntegerField(default=0)
     category= models.ForeignKey(Category,on_delete=models.CASCADE,default=1 )
     description= models.CharField(max_length=250, default='', blank=True, null= True)
-    image= models.ImageField(upload_to='uploads/products/')
+    image= models.ImageField(null=True, blank=True)
 
     @staticmethod
     def get_products_by_id(ids):
@@ -20,4 +20,12 @@ class Products(models.Model):
             return Products.objects.filter (category=category_id)
         else:
             return Products.get_all_products()
+    def __str__(self):
+        return self.name
     
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
